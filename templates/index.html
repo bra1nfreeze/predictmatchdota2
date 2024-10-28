@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Pertandingan Dota 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-center">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6">Prediksi Pertandingan Dota 2</h1>
+        <form id="prediction-form" action="/predict" method="post">
+            <div class="team bg-white border border-gray-300 p-6 mb-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-4">Radiant</h2>
+                <div class="team-form flex flex-wrap justify-center">
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">Hero</h3>
+                        {% for i in range(5) %}
+                        <select id="radiant_hero_{{ i }}" name="r_hero_{{ i+1 }}"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="">Pilih Hero</option>
+                            {% for hero in hero_options %}
+                            <option value="{{ hero['hero_id'] }}" {% if data and data.get('r_hero_' ~
+                                (i+1))==hero['hero_id']|string %}selected{% endif %}>
+                                {{ hero['localized_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 1</h3>
+                        {% for i in range(5) %}
+                        <select id="radiant_item_{{ i }}_0" name="r_{{ i+1 }}_item_0"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('r_' ~ (i+1) ~ '_item_0'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 2</h3>
+                        {% for i in range(5) %}
+                        <select id="radiant_item_{{ i }}_1" name="r_{{ i+1 }}_item_1"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('r_' ~ (i+1) ~ '_item_1'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 3</h3>
+                        {% for i in range(5) %}
+                        <select id="radiant_item_{{ i }}_2" name="r_{{ i+1 }}_item_2"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('r_' ~ (i+1) ~ '_item_2'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 4</h3>
+                        {% for i in range(5) %}
+                        <select id="radiant_item_{{ i }}_3" name="r_{{ i+1 }}_item_3"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('r_' ~ (i+1) ~ '_item_3'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 5</h3>
+                        {% for i in range(5) %}
+                        <select id="radiant_item_{{ i }}_4" name="r_{{ i+1 }}_item_4"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('r_' ~ (i+1) ~ '_item_4'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 6</h3>
+                        {% for i in range(5) %}
+                        <select id="radiant_item_{{ i }}_5" name="r_{{ i+1 }}_item_5"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('r_' ~ (i+1) ~ '_item_5'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="team bg-white border border-gray-300 p-6 mb-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-4">Dire</h2>
+                <div class="team-form flex flex-wrap justify-center">
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">Hero</h3>
+                        {% for i in range(5) %}
+                        <select id="dire_hero_{{ i }}" name="d_hero_{{ i+1 }}"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="">Pilih Hero</option>
+                            {% for hero in hero_options %}
+                            <option value="{{ hero['hero_id'] }}" {% if data and data.get('d_hero_' ~
+                                (i+1))==hero['hero_id']|string %}selected{% endif %}>
+                                {{ hero['localized_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 1</h3>
+                        {% for i in range(5) %}
+                        <select id="dire_item_{{ i }}_0" name="d_{{ i+1 }}_item_0"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('d_' ~ (i+1) ~ '_item_0'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 2</h3>
+                        {% for i in range(5) %}
+                        <select id="dire_item_{{ i }}_1" name="d_{{ i+1 }}_item_1"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('d_' ~ (i+1) ~ '_item_1'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 3</h3>
+                        {% for i in range(5) %}
+                        <select id="dire_item_{{ i }}_2" name="d_{{ i+1 }}_item_2"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('d_' ~ (i+1) ~ '_item_2'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 4</h3>
+                        {% for i in range(5) %}
+                        <select id="dire_item_{{ i }}_3" name="d_{{ i+1 }}_item_3"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('d_' ~ (i+1) ~ '_item_3'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 5</h3>
+                        {% for i in range(5) %}
+                        <select id="dire_item_{{ i }}_4" name="d_{{ i+1 }}_item_4"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('d_' ~ (i+1) ~ '_item_4'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                    <div class="team-column m-2">
+                        <h3 class="font-medium mb-2">ITEM 6</h3>
+                        {% for i in range(5) %}
+                        <select id="dire_item_{{ i }}_5" name="d_{{ i+1 }}_item_5"
+                            class="block w-40 p-2 border border-gray-300 rounded-md">
+                            <option value="0">Slot Kosong</option>
+                            {% for item in item_options %}
+                            <option value="{{ item['item_id'] }}" {% if data and data.get('d_' ~ (i+1) ~ '_item_5'
+                                )==item['item_id']|string %}selected{% endif %}>
+                                {{ item['item_name'] }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4">Prediksi</button>
+        </form>
+
+        {% if prediction%}
+        <h2 class="text-xl font-bold mt-6">Hasil Prediksi:</h2>
+        <h1 class="text-2xl font-semibold">{{ prediction }}</h1>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', function (event) {
+            const radiantHeroes = [];
+            const direHeroes = [];
+            let valid = true;
+            for (let i = 0; i < 5; i++) {
+                const radiantHero = document.getElementById(`radiant_hero_${i}`).value;
+                const direHero = document.getElementById(`dire_hero_${i}`).value;
+                if (!radiantHero || !direHero) {
+                    alert("Pemilihan hero tidak boleh kosong.");
+                    valid = false;
+                    break;
+                }
+                if (radiantHeroes.includes(radiantHero) || direHeroes.includes(direHero)) {
+                    alert("Pemilihan hero tidak boleh sama.");
+                    valid = false;
+                    break;
+                }
+                radiantHeroes.push(radiantHero);
+                direHeroes.push(direHero);
+            }
+            if (!valid) {
+                event.preventDefault();
+            } else {
+                const items = document.querySelectorAll('select[id^="radiant_item_"], select[id^="dire_item_"]');
+                items.forEach(item => {
+                    if (!item.value) {
+                        item.value = '0';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
